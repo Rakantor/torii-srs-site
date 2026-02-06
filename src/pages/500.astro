@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
+import { Button } from "../components/ui/button";
+import errorImage from "../assets/500.webp";
+
+interface Props {
+  error?: unknown;
+}
+
+const { error } = Astro.props;
+const errorMessage =
+  error instanceof Error && error.message.length > 0 ? error.message : null;
+---
+
+<Layout title="Server Error | Torii SRS">
+  <div class="min-h-screen bg-gradient-to-b from-muted/30 via-background to-background">
+    <div>
+      <Navbar client:load />
+    </div>
+
+    <main class="mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-16 text-center">
+      <img
+        src={errorImage.src}
+        alt="500 torii gate portal error"
+        class="mb-8 w-full max-w-md rounded-3xl"
+        loading="eager"
+      />
+
+      <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        The gate is unstable right now.
+      </h1>
+      <p class="mt-4 text-base text-muted-foreground">
+        Something failed on our side while loading this page. Please try again in
+        a moment.
+      </p>
+
+      {errorMessage && (
+        <p class="mt-2 text-sm text-muted-foreground" aria-live="polite">
+          Error details: {errorMessage}
+        </p>
+      )}
+
+      <div class="mt-8">
+        <Button size="lg">
+          <a href="/">Return to safety</a>
+        </Button>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>
