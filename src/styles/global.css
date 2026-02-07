@@ -140,6 +140,7 @@
 
   html {
     font-size: var(--font-size);
+    scroll-behavior: smooth;
   }
 
   h1 {
@@ -185,32 +186,93 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @layer components {
-  .pagefind-ui__search-input {
-    @apply w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/40;
+  .nav-link {
+    @apply relative inline-flex items-center text-muted-foreground transition-colors duration-200 hover:text-blue-600 focus-visible:text-blue-600;
   }
 
-  .pagefind-ui__search-clear {
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    height: 2px;
+    width: 100%;
+    border-radius: 9999px;
+    background-color: currentColor;
+    opacity: 0;
+    transform: scaleX(0.4);
+    transform-origin: left;
+    transition: transform 220ms ease, opacity 220ms ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    opacity: 0.8;
+    transform: scaleX(1);
+  }
+
+  .knowledge-search {
+    --pagefind-ui-scale: 0.75;
+    --pagefind-ui-primary: var(--foreground);
+    --pagefind-ui-text: var(--foreground);
+    --pagefind-ui-background: var(--background);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 0.75rem;
+    --pagefind-ui-font: inherit;
+  }
+
+  .knowledge-search .pagefind-ui__form:before {
+    top: 50%;
+    left: 0.95rem;
+    width: 0.95rem;
+    height: 0.95rem;
+    opacity: 0.45;
+    transform: translateY(-50%);
+  }
+
+  .knowledge-search .pagefind-ui__search-input {
+    @apply w-full rounded-xl border border-border bg-background py-3 pr-14 pl-11 text-sm font-medium text-foreground shadow-none focus:outline-none focus:ring-2 focus:ring-ring/35;
+    height: 3rem;
+  }
+
+  .knowledge-search .pagefind-ui__search-input::placeholder {
+    color: var(--muted-foreground);
+    opacity: 0.8;
+  }
+
+  .knowledge-search .pagefind-ui__search-clear {
     @apply text-muted-foreground;
+    top: 0.25rem;
+    right: 0.25rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
   }
 
-  .pagefind-ui__results {
-    @apply mt-4 space-y-3;
+  .knowledge-search .pagefind-ui__results {
+    @apply mt-3 space-y-3;
   }
 
-  .pagefind-ui__result {
+  .knowledge-search .pagefind-ui__result.pagefind-ui__result {
     @apply rounded-xl border border-border bg-background px-4 py-3 shadow-sm;
   }
 
-  .pagefind-ui__result-link {
+  .knowledge-search .pagefind-ui__result-link {
     @apply text-sm font-semibold text-foreground hover:underline;
   }
 
-  .pagefind-ui__result-excerpt {
+  .knowledge-search .pagefind-ui__result-excerpt {
     @apply mt-1 text-xs text-muted-foreground;
   }
 
-  .pagefind-ui__message {
+  .knowledge-search .pagefind-ui__message {
     @apply text-sm text-muted-foreground;
   }
 }

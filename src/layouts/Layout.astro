@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 const {
   title = "Torii SRS - Learn Japanese Vocabulary with Spaced Repetition",
@@ -14,6 +15,7 @@ const {
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<slot name="head" />
+		<ClientRouter />
 		<title>{title}</title>
 	</head>
 	<body>
