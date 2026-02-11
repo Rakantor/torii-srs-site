@@ -68,7 +68,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
     slot="head"
     is:inline
   >
-    window.addEventListener("load", () => {
+    document.addEventListener("astro:page-load", () => {
       if (window.PagefindUI) {
         new window.PagefindUI({
           element: "#pagefind-search",
@@ -85,7 +85,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
     slot="head"
     is:inline
   >
-    window.addEventListener("load", () => {
+    document.addEventListener("astro:page-load", () => {
       const form = document.querySelector("[data-contact-form]");
       if (!(form instanceof HTMLFormElement)) {
         return;
