@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
@@ -15,8 +15,17 @@ import {
   CardFooter,
 } from '../../components/ui/card';
 
-const articles = await getCollection('knowledge');
-const categories = [
+type KnowledgeArticle = CollectionEntry<'knowledge'>;
+type KnowledgeCategory = KnowledgeArticle['data']['category'];
+
+interface Category {
+  key: KnowledgeCategory;
+  title: string;
+  description: string;
+}
+
+const articles: KnowledgeArticle[] = await getCollection('knowledge');
+const categories: Category[] = [
   {
     key: 'getting-started',
     title: 'Getting Started',
@@ -55,13 +64,14 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
 
 <Layout title="Knowledge Base | Torii SRS">
   <link slot="head" rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-  <script slot="head" src="/pagefind/pagefind-ui.js" defer></script>
+  <script slot="head" src="/pagefind/pagefind-ui.js" defer is:inline></script>
   {turnstileSiteKey && (
     <script
       slot="head"
       src="https://challenges.cloudflare.com/turnstile/v0/api.js"
       async
       defer
+      is:inline
     ></script>
   )}
   <script
@@ -94,6 +104,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
       const status = form.querySelector("[data-contact-status]");
       const submitButton = form.querySelector("[data-contact-submit]");
 
+      /** @param {string} message @param {"success" | "error"} variant */
       const setStatus = (message, variant) => {
         if (!(status instanceof HTMLElement)) {
           return;
@@ -126,6 +137,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
             },
           });
 
+          /** @type {{ error?: string } | null} */
           const payload = await response.json().catch(() => null);
           if (!response.ok) {
             const message = payload?.error ?? "Unable to send your message. Please try again.";
@@ -202,7 +214,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
                     size="lg"
                     className="justify-start rounded-xl text-left text-sm font-semibold transition-colors whitespace-normal"
                   >
-                    <a href={`/knowledge/${post.slug}`}>{post.data.title}</a>
+                    <a href={`/knowledge/${post.id}`}>{post.data.title}</a>
                   </Button>
                 ))}
               </CardFooter>
