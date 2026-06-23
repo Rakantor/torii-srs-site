@@ -1,5 +1,29 @@
-import { Twitter, Github, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { siX, siGithub } from "simple-icons";
 import logo from "../assets/logo.webp";
+
+import type { SimpleIcon as SimpleIconType } from "simple-icons";
+
+function SimpleIcon({
+  icon,
+  className = "h-5 w-5",
+}: {
+  icon: SimpleIconType;
+  className?: string;
+}) {
+  return (
+    <svg
+      role="img"
+      aria-label={icon.title}
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <title>{icon.title}</title>
+      <path d={icon.path} />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -20,10 +44,10 @@ export function Footer() {
             </p>
             <div className="flex justify-center gap-4">
               <a href="#" className="hover:text-blue-400 transition-colors">
-                <Twitter className="h-5 w-5" />
+                <SimpleIcon icon={siX} />
               </a>
               <a href="#" className="hover:text-blue-400 transition-colors">
-                <Github className="h-5 w-5" />
+                <SimpleIcon icon={siGithub} />
               </a>
               <a href="#" className="hover:text-blue-400 transition-colors">
                 <Mail className="h-5 w-5" />
