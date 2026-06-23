@@ -10,12 +10,14 @@ const plans = [
     period: "forever",
     description: "Perfect for getting started with Japanese vocabulary",
     features: [
-      "100 flashcards per day",
-      "Basic SRS algorithm",
-      "JLPT N5-N4 vocabulary",
-      "Mobile & web access",
-      "Community decks (view only)",
-      "Basic progress tracking"
+      "Full access to core features:",
+      "Spaced Repetition System (SRS)",
+      "Pre-made decks (Core 10K, JLPT N5-N1, and more)",
+      "Audio for all vocabulary and example sentences",
+      "Unlimited reviews",
+      "Progress tracking and statistics",
+      "Offline mode",
+      "Ad-free"
     ],
     cta: "Start Learning Free",
     popular: false
@@ -26,15 +28,10 @@ const plans = [
     period: "per month",
     description: "For serious learners ready to accelerate their progress",
     features: [
-      "Unlimited flashcards",
-      "Advanced SRS algorithm",
-      "All JLPT levels (N5-N1)",
-      "Native audio pronunciations",
+      "Everything in Free",
+      "Unlimited custom flashcards",
       "Create custom decks",
-      "Advanced analytics & insights",
-      "Offline mode",
-      "Priority support",
-      "Ad-free experience"
+      "Support the developer and future development",
     ],
     cta: "Start Learning Free",
     popular: false
@@ -49,10 +46,6 @@ const plans = [
       "Lifetime access to all features",
       "Future feature updates included",
       "Early access to beta features",
-      "Exclusive community access",
-      "1-on-1 onboarding session",
-      "Priority feature requests",
-      "VIP support"
     ],
     cta: "Start Learning Free",
     popular: true

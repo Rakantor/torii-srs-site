@@ -61,7 +61,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
             <Button asChild>
-              <a href="https://app.torii-srs.com/">Get Started</a>
+              <a href="https://app.torii-srs.com/">Web App</a>
             </Button>
           </div>
 

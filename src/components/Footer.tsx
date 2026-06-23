@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { siX, siGithub } from "simple-icons";
+import { siGithub } from "simple-icons";
 import logo from "../assets/logo.webp";
 
 import type { SimpleIcon as SimpleIconType } from "simple-icons";
@@ -43,9 +43,6 @@ export function Footer() {
               Master Japanese vocabulary with smart flashcards and spaced repetition.
             </p>
             <div className="flex justify-center gap-4">
-              <a href="#" className="hover:text-blue-400 transition-colors">
-                <SimpleIcon icon={siX} />
-              </a>
               <a href="#" className="hover:text-blue-400 transition-colors">
                 <SimpleIcon icon={siGithub} />
               </a>

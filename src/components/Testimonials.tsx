@@ -4,25 +4,25 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah Chen",
+    name: "Leonardo L.",
     role: "JLPT N2 Student",
-    avatar: "SC",
+    avatar: "LL",
     rating: 5,
-    text: "This platform transformed my Japanese learning. The SRS system is incredibly effective - I went from N5 to N3 in just 6 months!"
+    text: "Brilliant app. If you're studying japanese, Torii SRS is incredibly useful. I don't need any of the \"Pro\" features, but I think I'll go \"Pro\" to support the developer!"
   },
   {
-    name: "Marcus Johnson",
-    role: "Software Developer",
-    avatar: "MJ",
-    rating: 5,
-    text: "As someone with a busy schedule, the quick review mode is perfect. I can study during my commute and the app keeps me on track."
-  },
-  {
-    name: "Yuki Tanaka",
+    name: "Kyle W.",
     role: "Japanese Teacher",
-    avatar: "YT",
+    avatar: "KW",
     rating: 5,
-    text: "I recommend this to all my students. The analytics help them understand their progress, and the custom decks are great for tailored learning."
+    text: "Going to be a hit. One of the best Japanese vocab learning programs available with example sentences and high quality audio. Can't believe it's free. And free of ads."
+  },
+  {
+    name: "Allison",
+    role: "Software Developer",
+    avatar: "A",
+    rating: 5,
+    text: "Love it so simple to use compared to anki"
   }
 ];
 
