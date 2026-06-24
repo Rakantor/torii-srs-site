@@ -111,7 +111,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
         }
 
         const baseClasses = "text-sm";
-        const variantClass = variant === "error" ? "text-destructive" : "text-emerald-700 dark:text-emerald-400";
+        const variantClass = variant === "error" ? "text-destructive" : "text-emerald-700";
         status.className = `${baseClasses} ${variantClass}`;
         status.textContent = message;
       };
@@ -164,25 +164,23 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
     });
   </script>
 
-  <div class="min-h-screen bg-gradient-to-b from-muted/40 via-background to-background">
-    <div data-pagefind-ignore>
-      <Navbar client:load />
-    </div>
+  <div class="min-h-screen bg-white">
+    <Navbar client:load />
 
-    <div class="w-full">
+    <div class="w-full bg-gray-50/60">
       <div class="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-12">
         <div class="mx-auto max-w-3xl text-center">
-          <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 class="text-3xl font-medium tracking-tight text-slate-800 sm:text-4xl">
             Torii SRS Knowledge Base
           </h1>
-          <p class="mt-4 text-lg text-muted-foreground">
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
             Everything you need to learn faster with Torii SRS, from daily reviews to
             offline access. Search by topic or browse by category.
           </p>
 
           <div id="pagefind-search" class="knowledge-search mt-8 text-left backdrop-blur-sm" data-pagefind-ignore></div>
           {isDev && (
-            <p class="mt-3 text-sm text-muted-foreground">
+            <p class="mt-3 text-sm text-slate-500">
               Search indexing is available in build preview. Run <code>pnpm build && pnpm preview</code>.
             </p>
           )}
@@ -194,16 +192,16 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
       <section class="mt-16">
         <div class="grid gap-6 lg:grid-cols-2">
           {articlesByCategory.map((category) => (
-            <Card className="bg-card/90 shadow-sm">
+            <Card className="border-slate-200 bg-white shadow-sm shadow-slate-100 transition-all hover:-translate-y-1 hover:shadow-lg">
               <CardHeader className="flex flex-row items-start justify-between gap-4">
                 <div>
-                  <CardTitle className="text-lg">{category.title}</CardTitle>
-                  <CardDescription className="mt-1 text-sm">
+                  <CardTitle className="text-lg font-medium text-slate-800">{category.title}</CardTitle>
+                  <CardDescription className="mt-1 text-sm text-slate-600">
                     {category.description}
                   </CardDescription>
                 </div>
                 <CardAction>
-                  <Badge variant="secondary">{category.articles.length} articles</Badge>
+                  <Badge variant="secondary" className="bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100">{category.articles.length} articles</Badge>
                 </CardAction>
               </CardHeader>
 
@@ -212,7 +210,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
                   <Button
                     variant="link"
                     size="lg"
-                    className="justify-start rounded-xl text-left text-sm font-semibold transition-colors whitespace-normal"
+                    className="justify-start rounded-xl text-left text-sm font-medium text-indigo-600 transition-colors whitespace-normal hover:bg-indigo-50"
                   >
                     <a href={`/knowledge/${post.id}`}>{post.data.title}</a>
                   </Button>
@@ -223,11 +221,11 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
         </div>
       </section>
 
-      <section class="mt-16">
-        <Card className="border-border bg-card/90 shadow-sm">
+      <section id="contact-support" class="mt-16 scroll-mt-24">
+        <Card className="border-slate-200 bg-white shadow-sm shadow-slate-100">
           <CardHeader>
-            <CardTitle className="text-2xl">Contact Support</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-2xl font-medium text-slate-800">Contact Support</CardTitle>
+            <CardDescription className="text-slate-600">
               Send us a message and we will follow up as soon as possible.
             </CardDescription>
           </CardHeader>
@@ -247,7 +245,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
                     type="text"
                     required
                     autocomplete="name"
-                    class="h-11 rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
+                    class="h-11 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm shadow-xs transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
                   />
                 </div>
                 <div class="grid gap-2">
@@ -258,7 +256,7 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
                     type="email"
                     required
                     autocomplete="email"
-                    class="h-11 rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
+                    class="h-11 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm shadow-xs transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
                   />
                 </div>
               </div>
@@ -272,9 +270,9 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
                   minlength={messageMinLength}
                   maxlength={messageMaxLength}
                   rows={6}
-                  class="rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
+                  class="rounded-md border border-slate-200 bg-white px-3 py-2 text-sm shadow-xs transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
                 ></textarea>
-                <p class="text-xs text-muted-foreground">
+                <p class="text-xs text-slate-500">
                   Message must be {messageMinLength}-{messageMaxLength} characters.
                 </p>
               </div>
@@ -311,8 +309,6 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
       </section>
     </main>
 
-    <div data-pagefind-ignore>
-      <Footer />
-    </div>
+    <Footer />
   </div>
 </Layout>

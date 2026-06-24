@@ -36,44 +36,42 @@ const related = allArticles
 ---
 
 <Layout title={`${article.data.title} | Torii SRS Knowledge Base`}>
-  <div class="min-h-screen bg-gradient-to-b from-muted/30 via-background to-background">
-    <div data-pagefind-ignore>
-      <Navbar client:load />
-    </div>
+  <div class="min-h-screen bg-white">
+    <Navbar client:load />
 
     <main class="mx-auto max-w-3xl px-6 py-12 lg:py-16">
-      <a href="/knowledge" class="text-sm text-muted-foreground transition hover:text-foreground">
+      <a href="/knowledge" class="text-sm text-slate-500 transition hover:text-indigo-600">
         ← Back to Knowledge Base
       </a>
 
       <header class="mt-6 space-y-4">
-        <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+        <p class="text-xs font-medium uppercase tracking-[0.2em] text-indigo-600">
           {categoryLabels[article.data.category] ?? article.data.category}
         </p>
-        <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 class="text-3xl font-medium tracking-tight text-slate-800 sm:text-4xl">
           {article.data.title}
         </h1>
-        <p class="text-lg text-muted-foreground">{article.data.description}</p>
+        <p class="text-base leading-relaxed text-slate-600 sm:text-lg">{article.data.description}</p>
       </header>
 
       <article
-        class="mt-10 space-y-6 text-base leading-7 text-foreground [&>h2]:mt-10 [&>h2]:text-2xl [&>h2]:font-semibold [&>h3]:mt-8 [&>h3]:text-xl [&>h3]:font-semibold [&>p]:text-muted-foreground [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:text-muted-foreground [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:text-muted-foreground [&>ol]:space-y-2 [&_strong]:text-foreground [&_code]:rounded [&_code]:bg-muted [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-sm"
+        class="mt-10 space-y-6 text-base leading-7 text-slate-700 [&>h2]:mt-10 [&>h2]:text-2xl [&>h2]:font-medium [&>h2]:text-slate-800 [&>h3]:mt-8 [&>h3]:text-xl [&>h3]:font-medium [&>h3]:text-slate-800 [&>p]:text-slate-600 [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:text-slate-600 [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:text-slate-600 [&>ol]:space-y-2 [&_strong]:text-slate-800 [&_code]:rounded [&_code]:bg-slate-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-sm"
         data-pagefind-body
       >
         <Content />
       </article>
 
       {related.length > 0 && (
-        <section class="mt-12 border-t border-border pt-8">
-          <h2 class="text-lg font-semibold">Related articles</h2>
+        <section class="mt-12 border-t border-slate-200 pt-8">
+          <h2 class="text-lg font-medium text-slate-800">Related articles</h2>
           <div class="mt-4 grid gap-3">
             {related.map((item) => (
               <a
                 href={`/knowledge/${item.id}`}
-                class="rounded-xl border border-border bg-card/90 px-4 py-3 text-sm transition hover:-translate-y-0.5 hover:shadow-sm"
+                class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm shadow-sm shadow-slate-100 transition hover:-translate-y-0.5 hover:border-slate-100 hover:shadow-lg"
               >
-                <p class="font-semibold">{item.data.title}</p>
-                <p class="mt-1 text-xs text-muted-foreground">{item.data.description}</p>
+                <p class="font-medium text-indigo-600">{item.data.title}</p>
+                <p class="mt-1 text-xs text-slate-500">{item.data.description}</p>
               </a>
             ))}
           </div>
@@ -81,8 +79,6 @@ const related = allArticles
       )}
     </main>
 
-    <div data-pagefind-ignore>
-      <Footer />
-    </div>
+    <Footer />
   </div>
 </Layout>

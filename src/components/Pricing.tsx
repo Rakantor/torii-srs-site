@@ -57,12 +57,12 @@ export function Pricing() {
     <section className="px-6 py-24 bg-background" id="pricing">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-base font-semibold text-blue-600 mb-4">PRICING</h2>
-          <h3 className="text-4xl sm:text-5xl tracking-tight mb-4">
+          <h2 className="mb-4 text-sm font-medium uppercase tracking-wider text-indigo-600">PRICING</h2>
+          <h3 className="mb-4 text-3xl font-medium tracking-tight text-slate-800 sm:text-4xl">
             Choose your plan
           </h3>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Start free, upgrade when you're ready. All plans include a 14-day money-back guarantee.
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+            Start free, upgrade when you're ready.
           </p>
         </div>
 
@@ -72,13 +72,13 @@ export function Pricing() {
               key={index}
               className={`relative flex flex-col ${
                 plan.popular 
-                  ? 'border-blue-500 border-2 shadow-xl scale-105' 
-                  : 'border-border'
+                  ? 'border-indigo-500 border-2 shadow-xl shadow-indigo-100/50 scale-105' 
+                  : 'border-slate-200'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 gap-1">
+                  <Badge className="bg-indigo-600 text-white px-4 py-1 gap-1">
                     <Sparkles className="h-3 w-3" />
                     Most Popular
                   </Badge>
@@ -86,9 +86,9 @@ export function Pricing() {
               )}
 
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
+                <CardTitle className="text-2xl font-medium mb-2">{plan.name}</CardTitle>
                 <div className="mb-2">
-                  <span className="text-5xl">{plan.price}</span>
+                  <span className="text-4xl font-medium">{plan.price}</span>
                   <span className="text-muted-foreground ml-2">/ {plan.period}</span>
                 </div>
                 <CardDescription className="text-base">
@@ -100,8 +100,8 @@ export function Pricing() {
                 <ul className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-950/50 flex items-center justify-center">
-                        <Check className="h-3 w-3 text-blue-600 dark:text-blue-300" />
+                      <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center">
+                        <Check className="h-3 w-3 text-indigo-600" />
                       </div>
                       <span className="text-foreground text-sm">{feature}</span>
                     </li>

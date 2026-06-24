@@ -1,7 +1,6 @@
 import { Button } from "./ui/button";
-import { Menu } from "lucide-react";
+import { ExternalLink, Menu } from "lucide-react";
 import { useState, type MouseEvent } from "react";
-import { ThemeToggle } from "./ThemeToggle";
 import logo from "../assets/logo.webp";
 
 export function Navbar() {
@@ -33,7 +32,10 @@ export function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav
+      className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-lg"
+      data-pagefind-ignore
+    >
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex items-center justify-between h-16">
           <a href="/" className="flex items-center gap-3" onClick={handleHomeClick}>
@@ -42,7 +44,7 @@ export function Navbar() {
               alt="Torii SRS logo"
               className="h-9 w-9 object-cover"
             />
-            <span className="text-xl font-semibold">Torii SRS</span>
+            <span className="text-xl font-medium text-slate-800">Torii SRS</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -59,9 +61,11 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <ThemeToggle />
-            <Button asChild>
-              <a href="https://app.torii-srs.com/">Web App</a>
+            <Button asChild className="group gap-1 px-4 py-2">
+              <a href="https://app.torii-srs.com/" aria-label="Open Torii SRS web app">
+                <span>Web App</span>
+                <ExternalLink className="mt-px h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </Button>
           </div>
 
@@ -73,7 +77,7 @@ export function Navbar() {
             aria-controls="mobile-navigation"
             aria-label="Toggle navigation menu"
           >
-            <Menu className="h-6 w-6 text-muted-foreground" />
+            <Menu className="h-6 w-6 text-slate-600" />
           </button>
         </div>
 
@@ -85,7 +89,7 @@ export function Navbar() {
             mobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="border-t border-border py-4">
+          <div className="border-t border-slate-200 py-4">
             <div className="flex flex-col gap-4">
               <a
                 href="/#features"
@@ -108,10 +112,12 @@ export function Navbar() {
               >
                 Pricing
               </a>
-              <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                <ThemeToggle />
-                <Button asChild className="w-full">
-                  <a href="https://app.torii-srs.com/">Get Started</a>
+              <div className="flex flex-col gap-2 pt-4 border-t border-slate-200">
+                <Button asChild className="group w-full">
+                  <a href="https://app.torii-srs.com/" aria-label="Open Torii SRS web app">
+                    <span>Get Started</span>
+                    <ExternalLink className="mt-px h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
                 </Button>
               </div>
             </div>

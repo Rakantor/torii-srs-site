@@ -16,9 +16,7 @@ const errorMessage =
 
 <Layout title="Server Error | Torii SRS">
   <div class="min-h-screen bg-gradient-to-b from-muted/30 via-background to-background">
-    <div>
-      <Navbar client:load />
-    </div>
+    <Navbar client:load />
 
     <main class="mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-16 text-center">
       <img
@@ -28,7 +26,7 @@ const errorMessage =
         loading="eager"
       />
 
-      <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">
         The gate is unstable right now.
       </h1>
       <p class="mt-4 text-base text-muted-foreground">

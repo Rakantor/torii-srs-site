@@ -67,11 +67,11 @@ export function Features() {
     <section className="px-6 py-24 bg-background" id="features">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-base font-semibold text-blue-600 mb-4">FEATURES</h2>
-          <h3 className="text-4xl sm:text-5xl tracking-tight mb-4">
+          <h2 className="mb-4 text-sm font-medium uppercase tracking-wider text-indigo-600">FEATURES</h2>
+          <h3 className="mb-4 text-3xl font-medium tracking-tight text-slate-800 sm:text-4xl">
             Built for long-term vocabulary retention
           </h3>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
             SRS, typed recall, and practical study tools that help Japanese words stay in memory
           </p>
         </div>
@@ -82,7 +82,7 @@ export function Features() {
             return (
               <Card 
                 key={index} 
-                className="border-border hover:shadow-lg transition-shadow duration-300"
+                className="border-slate-200 bg-white shadow-sm shadow-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-slate-100 hover:shadow-lg"
               >
                 <CardHeader>
                   <div className="mb-4 flex items-start justify-between gap-3">
@@ -95,7 +95,7 @@ export function Features() {
                       </Badge>
                     ) : null}
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl font-medium">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base">

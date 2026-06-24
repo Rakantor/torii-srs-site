@@ -8,28 +8,28 @@
 :root {
   --font-size: 16px;
   --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
+  --foreground: #1f2937;
   --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: #1f2937;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #030213;
+  --popover-foreground: #1f2937;
+  --primary: #4f46e5;
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.0058 264.53);
-  --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #111827;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --accent: #eef2ff;
+  --accent-foreground: #3730a3;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
+  --border: #e5e7eb;
   --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
+  --input-background: #f9fafb;
+  --switch-background: #e5e7eb;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
+  --ring: #6366f1;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -38,7 +38,7 @@
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #030213;
+  --sidebar-primary: #4f46e5;
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
@@ -131,6 +131,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   }
 
   /**
@@ -194,7 +195,7 @@
 
 @layer components {
   .nav-link {
-    @apply relative inline-flex items-center text-muted-foreground transition-colors duration-200 hover:text-blue-600 focus-visible:text-blue-600;
+    @apply relative inline-flex items-center text-sm text-slate-600 transition-colors duration-200 hover:text-indigo-600 focus-visible:text-indigo-600;
   }
 
   .nav-link::after {
@@ -220,7 +221,7 @@
 
   .knowledge-search {
     --pagefind-ui-scale: 0.75;
-    --pagefind-ui-primary: var(--foreground);
+    --pagefind-ui-primary: var(--primary);
     --pagefind-ui-text: var(--foreground);
     --pagefind-ui-background: var(--background);
     --pagefind-ui-border: var(--border);
@@ -239,7 +240,7 @@
   }
 
   .knowledge-search .pagefind-ui__search-input {
-    @apply w-full rounded-xl border border-border bg-background py-3 pr-14 pl-11 text-sm font-medium text-foreground shadow-none focus:outline-none focus:ring-2 focus:ring-ring/35;
+    @apply w-full rounded-full border border-border bg-background py-3 pr-14 pl-11 text-sm font-medium text-foreground shadow-sm shadow-slate-100 focus:outline-none focus:ring-2 focus:ring-ring/35;
     height: 3rem;
   }
 
@@ -261,11 +262,11 @@
   }
 
   .knowledge-search .pagefind-ui__result.pagefind-ui__result {
-    @apply rounded-xl border border-border bg-background px-4 py-3 shadow-sm;
+    @apply rounded-xl border border-border bg-background px-4 py-3 shadow-sm shadow-slate-100;
   }
 
   .knowledge-search .pagefind-ui__result-link {
-    @apply text-sm font-semibold text-foreground hover:underline;
+    @apply text-sm font-semibold text-indigo-600 hover:underline;
   }
 
   .knowledge-search .pagefind-ui__result-excerpt {
@@ -274,5 +275,26 @@
 
   .knowledge-search .pagefind-ui__message {
     @apply text-sm text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  @keyframes testimonials-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-testimonials-marquee {
+    animation: testimonials-marquee 72s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-testimonials-marquee {
+      animation: none;
+    }
   }
 }
