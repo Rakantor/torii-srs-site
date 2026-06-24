@@ -1,101 +1,109 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Card } from "./ui/card";
 import { Check } from "lucide-react";
+import anywhereImage from "../assets/feature-gallery-anywhere.webp";
+import decksImage from "../assets/feature-gallery-decks.webp";
+import srsImage from "../assets/feature-gallery-srs.webp";
+import typedRecallImage from "../assets/feature-gallery-typed-recall.webp";
 
 const galleryItems = [
   {
-    id: "flashcards",
-    title: "Smart Flashcards",
-    description: "Interactive flashcards with kanji, hiragana, romaji, and English translations",
+    id: "decks",
+    title: "Learn From Curated Decks",
+    description: "Start with Core 10k vocabulary, JLPT-focused sets, kana-only words, or WaniKani supplement content.",
     features: [
-      "Audio pronunciation by native speakers",
-      "Stroke order animations for kanji",
-      "Context-based example sentences",
-      "Instant feedback on your answers"
+      "Daily lessons introduce new words in manageable batches",
+      "Vocabulary includes readings, meanings, parts of speech, and example sentences",
+      "Pitch accent, furigana, and audio options support deeper study",
+      "Prioritize, archive, or customize what enters your lesson queue"
     ],
-    image: "https://images.unsplash.com/photo-1698510273393-a6302f3c90e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqYXBhbmVzZSUyMGthbmppJTIwc3R1ZHklMjBsZWFybmluZ3xlbnwxfHx8fDE3NzAyNDU0Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+    image: decksImage.src,
+    cropEdges: true
+  },
+  {
+    id: "typed-recall",
+    title: "Practice With Typed Recall",
+    description: "Reviews ask you to produce answers, not just recognize them, so you strengthen active memory.",
+    features: [
+      "Choose Japanese to English, English to Japanese, mixed, or Japanese-only reviews",
+      "Type answers with romaji-to-kana input support",
+      "Alternate meanings, readings, synonyms, and minor typos are handled gracefully",
+      "Use Quick Review or audio-focused practice when you want a lighter session"
+    ],
+    image: typedRecallImage.src
   },
   {
     id: "srs",
-    title: "Spaced Repetition",
-    description: "Intelligent review scheduling based on your performance and memory strength",
+    title: "Let SRS Schedule The Next Review",
+    description: "Correct answers move words forward through SRS stages; missed words return sooner for reinforcement.",
     features: [
-      "Customizable review intervals",
-      "Automatic difficulty adjustments",
-      "Optimized for long-term retention",
-      "Review forecasting and planning"
+      "Words progress from Lesson through Rookie, Apprentice, Adept, Expert, and Sensei",
+      "Missed answers move items back based on their current stage",
+      "Daily review counts keep the workload visible",
+      "Vacation Mode can pause scheduling while you are away"
     ],
-    image: "https://images.unsplash.com/photo-1625461291092-13d0c45608b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3b3Jrc3BhY2UlMjBkZXNrJTIwbWluaW1hbHxlbnwxfHx8fDE3NzAxMjI1OTB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+    image: srsImage.src
   },
   {
-    id: "progress",
-    title: "Progress Tracking",
-    description: "Comprehensive analytics to monitor your learning journey and achievements",
+    id: "anywhere",
+    title: "Keep Studying Anywhere",
+    description: "Torii is built for regular use, including offline study and flexible extra practice outside the SRS queue.",
     features: [
-      "Daily, weekly, and monthly statistics",
-      "Retention rate visualization",
-      "Study streak tracking",
-      "JLPT level progression"
+      "Lessons, reviews, self-study, and browsing work from local data",
+      "Progress syncs across devices when you are online",
+      "Self-Study lets you drill learned, custom, or archived vocabulary",
+      "Add custom vocabulary manually or from dictionary search"
     ],
-    image: "https://images.unsplash.com/photo-1765978856539-b9247f2e0d5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqYXBhbmVzZSUyMHRleHQlMjBjaGFyYWN0ZXJzfGVufDF8fHx8MTc3MDI0NTQyOHww&ixlib=rb-4.1.0&q=80&w=1080"
+    image: anywhereImage.src
   }
 ];
 
 export function FeatureGallery() {
   return (
-    <section className="px-6 py-24 bg-muted">
+    <section className="bg-gray-50/60 px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-base font-semibold text-blue-600 mb-4">HOW IT WORKS</h2>
-          <h3 className="text-4xl sm:text-5xl tracking-tight mb-4">
-            Experience the platform
+          <h2 className="mb-4 text-sm font-medium uppercase tracking-wider text-indigo-600">HOW IT WORKS</h2>
+          <h3 className="mb-4 text-3xl font-medium tracking-tight text-slate-800 sm:text-4xl">
+            Build vocabulary through daily recall
           </h3>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore our core features designed to make Japanese vocabulary stick
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+            Torii combines curated Japanese vocabulary, typed reviews, and an SRS schedule so each word comes back when it needs practice.
           </p>
         </div>
 
-        <Tabs defaultValue="flashcards" className="w-full">
-          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-12">
-            {galleryItems.map((item) => (
-              <TabsTrigger key={item.id} value={item.id} className="text-sm sm:text-base">
-                {item.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        <div className="space-y-20">
+          {galleryItems.map((item, itemIndex) => (
+            <div
+              key={item.id}
+              className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            >
+              <div className={itemIndex % 2 === 1 ? "lg:order-2" : ""}>
+                <h4 className="mb-4 text-2xl font-medium tracking-tight text-slate-800 lg:text-3xl">{item.title}</h4>
+                <p className="mb-8 text-base leading-relaxed text-slate-600 sm:text-lg">{item.description}</p>
+                
+                <ul className="space-y-4">
+                  {item.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100">
+                        <Check className="h-3 w-3 text-indigo-600" />
+                      </div>
+                      <span className="text-slate-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          {galleryItems.map((item) => (
-            <TabsContent key={item.id} value={item.id} className="mt-0">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="order-2 lg:order-1">
-                  <h4 className="text-3xl mb-4">{item.title}</h4>
-                  <p className="text-lg text-muted-foreground mb-8">{item.description}</p>
-                  
-                  <ul className="space-y-4">
-                    {item.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-950/50 flex items-center justify-center">
-                          <Check className="h-3 w-3 text-blue-600 dark:text-blue-300" />
-                        </div>
-                        <span className="text-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="order-1 lg:order-2">
-                  <Card className="overflow-hidden shadow-xl border-border">
-                    <img 
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-auto"
-                    />
-                  </Card>
+              <div className={itemIndex % 2 === 1 ? "lg:order-1" : ""}>
+                <div className="overflow-hidden rounded-2xl shadow-xl shadow-slate-300/40 ring-1 ring-slate-900/5">
+                  <img 
+                    src={item.image}
+                    alt={item.title}
+                    className={`h-auto w-full ${item.cropEdges ? "scale-[1.02]" : ""}`}
+                  />
                 </div>
               </div>
-            </TabsContent>
+            </div>
           ))}
-        </Tabs>
+        </div>
       </div>
     </section>
   );
