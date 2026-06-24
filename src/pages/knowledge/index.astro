@@ -63,22 +63,19 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
 ---
 
 <Layout title="Knowledge Base | Torii SRS">
-  <link slot="head" rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-  <script slot="head" src="/pagefind/pagefind-ui.js" defer is:inline></script>
-  {turnstileSiteKey && (
-    <script
-      slot="head"
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-      async
-      defer
-      is:inline
-    ></script>
-  )}
-  <script
-    slot="head"
-    is:inline
-  >
-    document.addEventListener("astro:page-load", () => {
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+    <script src="/pagefind/pagefind-ui.js" defer is:inline></script>
+    {turnstileSiteKey && (
+      <script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async
+        defer
+        is:inline
+      ></script>
+    )}
+    <script is:inline>
+      const initPagefind = () => {
       if (window.PagefindUI) {
         new window.PagefindUI({
           element: "#pagefind-search",
@@ -89,17 +86,21 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
           },
         });
       }
-    });
-  </script>
-  <script
-    slot="head"
-    is:inline
-  >
-    document.addEventListener("astro:page-load", () => {
+      };
+
+      document.addEventListener("DOMContentLoaded", initPagefind);
+      document.addEventListener("astro:page-load", initPagefind);
+    </script>
+    <script is:inline>
+      const initContactForm = () => {
       const form = document.querySelector("[data-contact-form]");
       if (!(form instanceof HTMLFormElement)) {
         return;
       }
+      if (form.dataset.contactFormReady === "true") {
+        return;
+      }
+      form.dataset.contactFormReady = "true";
 
       const status = form.querySelector("[data-contact-status]");
       const submitButton = form.querySelector("[data-contact-submit]");
@@ -161,8 +162,13 @@ const isTurnstileConfigured = Boolean(turnstileSiteKey);
           }
         }
       });
-    });
-  </script>
+      };
+
+      initContactForm();
+      document.addEventListener("DOMContentLoaded", initContactForm);
+      document.addEventListener("astro:page-load", initContactForm);
+    </script>
+  </Fragment>
 
   <div class="min-h-screen bg-white">
     <Navbar client:load />
