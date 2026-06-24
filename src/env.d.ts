@@ -2,6 +2,9 @@
 
 interface ImportMetaEnv {
   readonly PUBLIC_TURNSTILE_SITE_KEY?: string;
+  readonly PUBLIC_CONTACT_EMAIL?: string;
+  readonly PUBLIC_GITHUB_URL?: string;
+  readonly PUBLIC_LEGACY_APPS_URL?: string;
 }
 
 interface ImportMeta {
